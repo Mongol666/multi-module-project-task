@@ -1,4 +1,4 @@
-package by.example.models;
+package by.example.models.student;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
