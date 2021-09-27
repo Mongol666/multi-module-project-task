@@ -1,4 +1,4 @@
-package by.example.logic;
+package by.example.logic.student;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

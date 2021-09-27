@@ -1,4 +1,4 @@
-package by.example.logic;
+package by.example.logic.teacher;
 
 import by.example.models.teacher.Teacher;
 
@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 public class AverageOfTeacherSalaries {
     public static BigDecimal getAverageSalaries() {
         Teacher[] teachers = new Teacher[(int) (Math.random() * 10 + 1)];
-        initializeSalaries(teachers);
+        initializeTeachersAndSalaries(teachers);
         BigDecimal sumOfSalaries = sumOfSalaries(teachers);
 
         // переменная, которая определяет размер массива преподавателей
@@ -22,9 +22,9 @@ public class AverageOfTeacherSalaries {
      *
      * @param teachers тип - массив {@link Teacher}
      */
-    private static void initializeSalaries(Teacher[] teachers) {
-        for (Teacher teacher : teachers) {
-            teacher.setSalary(BigDecimal.valueOf(Math.random() * 5000 + 1500));
+    private static void initializeTeachersAndSalaries(Teacher[] teachers) {
+        for (int i = 0; i < teachers.length; i++) {
+            teachers[i] = new Teacher(BigDecimal.valueOf(Math.random() * 5000 + 1500));
         }
     }
 
