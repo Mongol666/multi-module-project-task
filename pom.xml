@@ -12,6 +12,7 @@
     <modules>
         <module>models</module>
         <module>logic</module>
+        <module>app</module>
     </modules>
 
     <properties>

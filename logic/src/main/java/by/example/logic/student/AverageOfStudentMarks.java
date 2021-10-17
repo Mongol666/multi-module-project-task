@@ -2,39 +2,40 @@ package by.example.logic.student;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.example.models.student.Student;
 
 public class AverageOfStudentMarks {
     public static BigDecimal getAverageMarks() {
-        Student student = new Student(new BigDecimal[(int) (Math.random() * 10 + 1)]);
-        initializeMarks(student.getMarks());
+        Student student = new Student(initializeMarks((int) (Math.random() * 10 + 1)));
         BigDecimal sumOfMarks = sumOfMarks(student.getMarks());
 
-        // переменная, которая определяет размер массива оценок студента
-        int size = student.getMarks().length;
-
-        return sumOfMarks.divide(new BigDecimal(size), 2, RoundingMode.HALF_UP);
+        return sumOfMarks.divide(new BigDecimal(student.getMarks().size()), 2, RoundingMode.HALF_UP);
     }
 
     /**
      * Метод, отвечающий за инициализацию оценок студента
      *
-     * @param marks тип - {@link BigDecimal}
+     * @param capacityOfList: тип - {@link Integer}
+     * @return marks: {@link List<BigDecimal>}
      */
-    private static void initializeMarks(BigDecimal[] marks) {
-        for (int i = 0; i < marks.length; i++) {
-            marks[i] = BigDecimal.valueOf(Math.random() * 10 + 1);
+    private static List<BigDecimal> initializeMarks(int capacityOfList) {
+        List<BigDecimal> marks = new ArrayList<>();
+        for (int i = 0; i < capacityOfList; i++) {
+            marks.add(BigDecimal.valueOf(Math.random() * 10 + 1));
         }
+        return marks;
     }
 
     /**
      * Метод, отвечающий за суммирование всех оценок студента
      *
-     * @param marks тип - массив {@link BigDecimal}
+     * @param marks тип - List из {@link BigDecimal}
      * @return тип {@link BigDecimal}
      */
-    private static BigDecimal sumOfMarks(BigDecimal[] marks) {
+    private static BigDecimal sumOfMarks(List<BigDecimal> marks) {
         BigDecimal result = new BigDecimal(0);
         for (BigDecimal mark : marks) {
             result = result.add(mark);
